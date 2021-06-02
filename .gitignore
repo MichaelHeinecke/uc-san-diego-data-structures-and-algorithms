@@ -1,2 +1,3 @@
-/.idea/
-/uc-san-diego-data-structures-and-algorithms.iml
+.idea/
+*.iml
+target/
