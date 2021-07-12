@@ -15,6 +15,11 @@ public class FibonacciPisanoPeriodTest {
 
     @Test
     void testFibonacciModuloLargeInput() {
-        assertEquals(151, FibonacciPisanoPeriod.calculateFibonacciModulo(2816213588L, 239));
+        assertEquals(151, FibonacciPisanoPeriod.calculateFibonacciModulo(2_816_213_588L, 239));
+    }
+
+    @Test
+    void testFibonacciModuloVeryLargeInput() {
+        assertEquals(0, FibonacciPisanoPeriod.calculateFibonacciModulo(9_999_999_999_999L, 17));
     }
 }
