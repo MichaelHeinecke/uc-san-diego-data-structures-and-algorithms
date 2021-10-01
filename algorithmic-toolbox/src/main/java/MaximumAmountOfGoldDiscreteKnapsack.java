@@ -26,7 +26,7 @@ public class MaximumAmountOfGoldDiscreteKnapsack {
         int knapsackCapacity = scanner.nextInt();
         int numberOfGoldBars = scanner.nextInt();
         int[] weightsOfGoldBars = new int[numberOfGoldBars + 1];
-        for (int i = 1; i < numberOfGoldBars; i++) {
+        for (int i = 0; i < numberOfGoldBars; i++) {
             weightsOfGoldBars[i] = scanner.nextInt();
         }
         System.out.println(determineMaximumAmountOfGold(knapsackCapacity, weightsOfGoldBars));
