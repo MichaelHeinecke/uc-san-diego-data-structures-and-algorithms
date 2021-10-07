@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>algorithmic-toolbox</module>
+        <module>data-structures</module>
     </modules>
 
     <properties>
