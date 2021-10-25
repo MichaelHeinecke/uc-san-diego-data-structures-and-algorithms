@@ -5,11 +5,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class HashChains {
-
     private FastScanner in;
-    private PrintWriter out;
-    // store all strings in one list
-//    private List<String> elems;
 
     public static void main(String[] args) throws IOException {
         new HashChains().processQueries();
@@ -39,8 +35,6 @@ public class HashChains {
                 break;
             case "check":
                 hashTable.check(query.index);
-                // Uncomment the following if you want to play with the program interactively.
-                 out.flush();
                 break;
             default:
                 throw new RuntimeException("Unknown query: " + query.type);
@@ -49,7 +43,7 @@ public class HashChains {
 
     public void processQueries() throws IOException {
         in = new FastScanner();
-        out = new PrintWriter(new BufferedOutputStream(System.out));
+        PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
         int bucketCount = in.nextInt();
         HashTable hashTable = new HashTable(bucketCount);
         int queryCount = in.nextInt();
@@ -61,7 +55,7 @@ public class HashChains {
 
     static class HashTable {
         private final int bucketCount;
-        private List<LinkedList<String>> hashList;
+        private final List<LinkedList<String>> hashList;
 
         HashTable(int bucketCount) {
             this.bucketCount = bucketCount;
