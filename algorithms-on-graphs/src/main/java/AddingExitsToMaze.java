@@ -1,12 +1,9 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class AddingExitsToMaze {
     static int findNumberOfConnectedComponents(List<List<Integer>> adjacencyList) {
         // use depth first search algorithm to traverse graph
-        HashSet<Integer> visitedVertices = new HashSet<>();
+        Set<Integer> visitedVertices = new HashSet<>();
         int numberOfConnectedComponents = 0;
 
         // iterate over adjacency list for starting points of traversals
@@ -22,7 +19,7 @@ public class AddingExitsToMaze {
         return numberOfConnectedComponents;
     }
 
-    private static void traverse(List<List<Integer>> adjacencyList, HashSet<Integer> visitedVertices, Integer currentVertex) {
+    private static void traverse(List<List<Integer>> adjacencyList, Set<Integer> visitedVertices, Integer currentVertex) {
         // mark current vertex as visited
         visitedVertices.add(currentVertex);
 
