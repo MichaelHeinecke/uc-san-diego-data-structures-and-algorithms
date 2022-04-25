@@ -47,13 +47,8 @@ public class AddingExitsToMaze {
             x = scanner.nextInt();
             y = scanner.nextInt();
 
-            List<Integer> temp = adjacencyList.get(x - 1);
-            temp.add(y - 1);
-            adjacencyList.set(x - 1, temp);
-
-            temp = adjacencyList.get(y - 1);
-            temp.add(x - 1);
-            adjacencyList.set(y - 1, temp);
+            adjacencyList.get(x - 1).add(y - 1);
+            adjacencyList.get(y - 1).add(x - 1);
         }
 
         System.out.println(findNumberOfConnectedComponents(adjacencyList));
