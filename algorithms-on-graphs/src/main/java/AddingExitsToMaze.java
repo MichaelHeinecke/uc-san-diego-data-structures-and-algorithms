@@ -13,7 +13,6 @@ public class AddingExitsToMaze {
                 numberOfConnectedComponents++;
                 traverse(adjacencyList, visitedVertices, vertex);
             }
-            traverse(adjacencyList, visitedVertices, vertex);
         }
 
         return numberOfConnectedComponents;
