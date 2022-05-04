@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class CSCurriculumConsistency {
     static int isAcyclic(List<List<Integer>> adjacencyList) {
-        // use DFS to traverse graph while keeping track of
+        // use DFS to traverse graph while keeping track of visited vertices and vertices in the stack
         // mark all the vertices as not visited and not part of recursion stack
         boolean[] visitedVertices = new boolean[adjacencyList.size()];
         boolean[] recursionStack = new boolean[adjacencyList.size()];
