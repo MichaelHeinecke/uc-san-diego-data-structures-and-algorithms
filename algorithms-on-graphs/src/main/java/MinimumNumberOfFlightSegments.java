@@ -5,7 +5,7 @@ public class MinimumNumberOfFlightSegments {
     public static int determineDistanceBetweenNodes(List<List<Integer>> adjacencyList, int startNode, int destinationNode) {
         int[] distances = new int[adjacencyList.size()];
         // Queue for breadth first search containing starting node.
-        Queue<Integer> bfsQueue = new LinkedList<>(List.of(startNode));
+        Queue<Integer> bfsQueue = new LinkedList<>(Arrays.asList(startNode));
 
         while (!bfsQueue.isEmpty()) {
             // Iterate over neighbouring vertices.
