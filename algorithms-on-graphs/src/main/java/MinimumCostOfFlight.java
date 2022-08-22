@@ -13,13 +13,12 @@ public class MinimumCostOfFlight {
         // Distance from start vertex to start vertex is 0
         distances[startVertex] = 0;
 
-        // Previous vertex on optimal path
-        int[] previousVertices = new int[adjacencyList.size()];
-
         // Create priority queue with distances as priority value
         PriorityQueue<Vertex> priorityQueue = new PriorityQueue<>();
+        // Add start vertex to relax its edges
         priorityQueue.add(new Vertex(startVertex, 0));
 
+        // Relax edges
         while (!priorityQueue.isEmpty()) {
             int currentVertexId = priorityQueue.poll().vertexId;
             List<Integer> adjacentVertices = adjacencyList.get(currentVertexId);
@@ -29,9 +28,10 @@ public class MinimumCostOfFlight {
                 int adjacentVertexId = adjacentVertices.get(adjacencyIndex);
                 int adjacentCost = adjacentCosts.get(adjacencyIndex);
 
+                // Relax edge if cost to reach it on current path is smaller than any previous paths
                 if (distances[adjacentVertexId] > distances[currentVertexId] + adjacentCost) {
                     distances[adjacentVertexId] = distances[currentVertexId] + adjacentCost;
-                    previousVertices[adjacentVertexId] = currentVertexId;
+                    // Add adjacent vertex to relax its edges
                     priorityQueue.add(new Vertex(adjacentVertexId, distances[adjacentVertexId]));
                 }
             }
@@ -67,6 +67,7 @@ public class MinimumCostOfFlight {
 
         int startNode = scanner.nextInt() - 1;
         int destinationNode = scanner.nextInt() - 1;
+
         System.out.println(determineMinimumCostBetweenVertices(adjacencyList, cost, startNode, destinationNode));
     }
 
