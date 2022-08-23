@@ -12,7 +12,7 @@ public class MinimumCostOfFlightTest {
                 List.of(1, 2), List.of(2), List.of()
         );
         List<List<Integer>> cost = List.of(
-                List.of(7), List.of(5), List.of(2)
+                List.of(7, 5), List.of(2), List.of()
         );
         int startVertex = 2;
         int destinationVertex = 1;
