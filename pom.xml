@@ -12,6 +12,7 @@
         <module>algorithmic-toolbox</module>
         <module>data-structures</module>
         <module>algorithms-on-graphs</module>
+        <module>algorithms-on-strings</module>
     </modules>
 
     <properties>
