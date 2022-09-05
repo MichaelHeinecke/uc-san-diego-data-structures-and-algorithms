@@ -8,11 +8,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class GeneralizedMultiplePatternMatching {
+        private final TrieNode ROOT = new TrieNode('^', false, new HashMap<>());
 
-    static class Trie {
-        private static final TrieNode ROOT = new TrieNode('^', false, new HashMap<>());
-
-        Trie(String[] patterns) {
+        void buildTrie(String[] patterns) {
             for (String pattern : patterns) {
                 TrieNode currentNode = ROOT;
                 for (int i = 0; i < pattern.length(); i++) {
@@ -49,7 +47,6 @@ public class GeneralizedMultiplePatternMatching {
 
             return results;
         }
-    }
 
     private static class TrieNode {
         char label;
@@ -85,8 +82,9 @@ public class GeneralizedMultiplePatternMatching {
                 patterns[i] = in.readLine();
             }
 
-            Trie trie = new Trie(patterns);
-            List<Integer> ans = trie.findMatches(text);
+            GeneralizedMultiplePatternMatching generalizedMultiplePatternMatching = new GeneralizedMultiplePatternMatching();
+            generalizedMultiplePatternMatching.buildTrie(patterns);
+            List<Integer> ans = generalizedMultiplePatternMatching.findMatches(text);
 
             System.out.println(ans.stream().map(String::valueOf).collect(Collectors.joining(" ")));
         }
