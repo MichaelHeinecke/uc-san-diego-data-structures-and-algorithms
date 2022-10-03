@@ -34,7 +34,12 @@ public class ReconstructStringFromBurrowsWheelerTransformTest {
         public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
             return Stream.of(
                     Arguments.of("AC$A", "ACA$"),
-                    Arguments.of("AGGGAA$", "GAGAGA$")
+                    Arguments.of("AGGGAA$", "GAGAGA$"),
+                    Arguments.of("do$oodwg", "dogwood$"),
+                    Arguments.arguments("e$elplepa", "appellee$"),
+                    Arguments.of("torg$_hntriatnet_wo_sb", "another_string_to_bwt$"),
+                    Arguments.of("G$AAACAAAAAACCACCCAAAGCGACCACACCCTGGGTTTTTTCTTGGGGTTGTC", "AAAAAAAACCCCCTTTTGTGTGTGTGTTTGGGGCCCAAAACACACACCTGCACG$"),
+                    Arguments.of("T$AAGGGTAGTCCCCCCCGAAAAAGCGGGGGGGAGGGTTTTTTTTTTTTGTG", "AAAAGGGGGGGTTTTTTTTCCCCCCCCGGGGGTTTTTTTAGGAGAGAGAGT$")
             );
         }
     }
