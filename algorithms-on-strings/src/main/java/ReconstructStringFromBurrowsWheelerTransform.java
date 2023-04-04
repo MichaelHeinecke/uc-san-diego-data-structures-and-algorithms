@@ -1,44 +1,60 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Arrays;
 
 public class ReconstructStringFromBurrowsWheelerTransform {
 
     public String reconstructStringFromBurrowsWheelerTransform(String bwt) {
-        // The Burrows Wheeler Transform (BWT) is the last column of the BWT matrix
-        Map<Character, Integer> charCounts = new HashMap<>();
-        List<Integer> charRanks = new ArrayList<>();
+        CharCount[] charCounts = new CharCount[bwt.length()];
+        for (int i = 0; i < bwt.length(); i++) {
+            charCounts[i] = new CharCount(bwt.charAt(i), i);
+        }
+        Arrays.sort(charCounts);
 
-        for (char c : bwt.toCharArray()) {
-            int count = charCounts.getOrDefault(c, 0);
-            charRanks.add(count);
-            charCounts.put(c, ++count);
+        StringBuilder invertedBwt = new StringBuilder();
+        CharCount charCount = charCounts[0];
+        for (int i = 0; i < bwt.length(); i++) {
+            charCount = charCounts[charCount.count];
+            invertedBwt.append(charCount.character);
         }
 
-        Map<Character, Integer> firstColumn = new HashMap<>();
-        int charRange = 0;
+        return invertedBwt.toString();
+    }
 
-        List<Map.Entry<Character, Integer>> sortedCharCounts = charCounts.entrySet().stream()
-                .sorted(Map.Entry.comparingByKey())
-                .collect(Collectors.toList());
+    static class CharCount implements Comparable<CharCount> {
+        char character;
+        int count;
 
-        for (Map.Entry<Character, Integer> e : sortedCharCounts) {
-            firstColumn.put(e.getKey(), charRange);
-            charRange = charRange + e.getValue();
+        public CharCount(char character, int count) {
+            this.character = character;
+            this.count = count;
         }
 
-        StringBuilder reconstructed = new StringBuilder("$");
-        int rowIndex = 0;
-        while (bwt.charAt(rowIndex) != '$') {
-            char c = bwt.charAt(rowIndex);
-            reconstructed.insert(0, c);
-            // jump to row that starts with character of same rank
-            rowIndex = firstColumn.get(c) + charRanks.get(rowIndex);
+        @Override
+        public int compareTo(CharCount charCount) {
+            return Integer.compare(character, charCount.character);
         }
 
-        return reconstructed.toString();
+        @Override
+        public boolean equals(Object other) {
+            if(this == other) return true;
+
+            if(other == null || (this.getClass() != other.getClass())){
+                return false;
+            }
+
+            CharCount charCount = (CharCount) other;
+            return (this.character == charCount.character) && (this.count == charCount.count);
+        }
+
+        @Override
+        public final int hashCode() {
+            int result = 17;
+            result = 31 * result + character;
+            result = 31 * result + count;
+            return result;
+        }
     }
 
     public static void main(String[] args) throws IOException {
